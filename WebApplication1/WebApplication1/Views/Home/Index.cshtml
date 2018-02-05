@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("Parser", "Home", FormMethod.Post))
+{
+	<h5>Input URLs, please </h5>
+	<textarea name="URLs"> </textarea>
+
+	<input type="submit" value="Отправить" /> 
+
+}
+
+

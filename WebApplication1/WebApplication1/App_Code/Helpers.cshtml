@@ -1,0 +1,11 @@
+﻿@helper HtmlList(string[] items) //(ViewBag.URLs)
+{
+	<ul>
+		@foreach (var item in items)  //<li>ViewBag.URLs.URL</li>
+		{                               //<li>ViewBag.URLs.Rdate</li> <li>ViewBag.URLs.Title</li> <li>ViewBag.URLs.Status</li> <li>ViewBag.URLs.LRdate</li><li>ViewBag.URLs.LTitle</li><li>ViewBag.URLs.LStatus</li>
+			<li>@item</li>
+		}
+	</ul>
+}
+
+

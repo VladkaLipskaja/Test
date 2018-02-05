@@ -1,0 +1,49 @@
+﻿@model IList<string>
+@{
+    ViewBag.Title = "Results";
+}
+
+<h2>Parser</h2>
+
+
+<table>
+    @foreach (var item in Model)
+	{
+		<tr tittle="Statistics" name=@item>
+			<td>@item</td>
+			<td><i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i></td>
+			<td><i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i></td>
+		</tr>
+	}
+
+</table>
+
+
+<script>
+/*	$('table tr').click(function () {
+		location.href = $(this).attr('tittle');
+		
+	});*/
+
+	$(document).ready(function () {
+		$("table tr").each((index, value) => {
+			var childs = value.children;
+			var url = childs[0].innerText;
+
+			$.ajax({
+				type: "GET",
+				url: '@Url.Action("GetInfo")',
+				data: { URL: url },
+				success: function (recData) {
+					childs[1].innerText = recData.status;
+					childs[2].innerText = recData.title;
+				},
+				error: function (err, tst1, tst2) {
+					childs[1].innerText = 'Error';
+					childs[2].innerText = 'Error';
+				}
+			});
+		})
+	});
+
+</script>
